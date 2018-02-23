@@ -5,18 +5,20 @@ import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
 
 const render = (Component) => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById('react-container')
-  );
-}
+	ReactDOM.render(
+		<AppContainer>
+			<Component />
+		</AppContainer>,
+		document.getElementById('react-container')
+	);
+};
 
 render(App);
 
-if(module.hot) {
+/*eslint-disable */
+if (module.hot) {
   module.hot.accept('./components/App', () => {
-    render(App)
+    render(App);
   });
 }
+/*eslint-enable */
