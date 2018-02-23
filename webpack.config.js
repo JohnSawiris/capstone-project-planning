@@ -1,8 +1,9 @@
-const { resolve } = require('path');
 const webpack = require('webpack');
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
@@ -32,28 +33,30 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
           presets: [
-            'es2015',
-            'react'
+            ["es2015", {"modules": false}],
+            "react",
           ],
           plugins: [
-            'react-hot-loader/babel'
+            "react-hot-loader/babel",
+            "styled-jsx/babel"
           ]
         }
       }
-    ]
+    ],
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      template: 'template.ejs',
+      template:'template.ejs',
       appMountId: 'react-container',
-      title: 'Work On Yourself',
-      filename: resolve(__dirname, 'build', 'index.html')
-    })
+      title: 'React Help Queue',
+      filename: resolve(__dirname, "build", "index.html"),
+    }),
   ]
 };
