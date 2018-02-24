@@ -25,7 +25,7 @@ function App() {
           margin: 0;
           padding: 0;
           font-family: 'Noto Sans', sans-serif;
-          color: #fff;
+          color: #000;
           min-height: 100%;
         }
         img {

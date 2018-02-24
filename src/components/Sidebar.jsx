@@ -4,11 +4,11 @@ import TiUser from 'react-icons/lib/ti/user';
 
 function Sidebar() {
   const avatar = {
-    color: "#eee",
+    color: "#fff",
     width: "130px",
     height: "130px",
     magrin: "auto",
-    border: "1px solid #eee",
+    border: "3px solid #fff",
     borderRadius: "50%"
   }
   return(
@@ -19,9 +19,14 @@ function Sidebar() {
             width: 130px;
             margin: auto;
           }
+          h3 {
+            color: #fff;
+            text-align: center;
+          }
       `}</style>
       <div className="profile-info">
         <TiUser style={avatar}/>
+        <h3>User Name</h3>
       </div>
     </div>
   );

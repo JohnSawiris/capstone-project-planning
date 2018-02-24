@@ -8,7 +8,8 @@ const exercises = [
     muscle: "Abs",
     workoutRoutine: [
       "Plank",
-      "Cruches"
+      "Cruches",
+      "Plank Again"
     ]
   },
   {
@@ -50,17 +51,18 @@ function WeekSchedule() {
             display: flex;
             justify-content: space-between;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 1rem auto;
           }
           .sidebar {
             flex-basis: 24%;
             width: 25%;
-            background-color: #111;
+            background-color: #000;
             padding: 1rem;
           }
           .main {
-            flex-basis: 74%;
+            flex-basis: 75%;
             width: 75%;
+            padding-left: 1rem;
           }
       `}</style>
       <div className="main">
