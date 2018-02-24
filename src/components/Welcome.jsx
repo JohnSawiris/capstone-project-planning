@@ -22,8 +22,9 @@ function Welcome() {
           }
           .welcome-wrapper {
             width: 600px;
+            margin-top: 1rem;
             background-color: rgba(252,76,53, 0.86);
-            padding: 1rem 2rem 0;
+            padding: 1rem 2rem 1rem;
             border-radius: 0.3rem;
           }
         `}</style>
