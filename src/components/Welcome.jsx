@@ -12,7 +12,6 @@ function Welcome() {
             justify-content: flex-start;
             align-items: center;
             height: 100%;
-            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
             background-image: linear-gradient(to right,rgba(150, 201, 61, 0.3),rgba(0, 176, 155, 0.3)), url(${background});

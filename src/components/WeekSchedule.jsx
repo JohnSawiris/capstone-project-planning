@@ -44,13 +44,35 @@ const exercises = [
 
 function WeekSchedule() {
   return(
-    <div>
-      <Sidebar />
-      {exercises.map((exercise, i) =>
-         <ExerciseDay key={i}
-                      muscle={exercise.muscle}
-                      workoutRoutine={exercise.workoutRoutine} />
-          )}
+    <div className="schedule">
+      <style jsx>{`
+          .schedule {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+          }
+          .sidebar {
+            flex-basis: 24%;
+            width: 25%;
+            background-color: #111;
+            padding: 1rem;
+          }
+          .main {
+            flex-basis: 74%;
+            width: 75%;
+          }
+      `}</style>
+      <div className="main">
+        {exercises.map((exercise, i) =>
+           <ExerciseDay key={i}
+                        muscle={exercise.muscle}
+                        workoutRoutine={exercise.workoutRoutine} />
+            )}
+      </div>
+      <div className="sidebar">
+          <Sidebar />
+        </div>
     </div>
   );
 }

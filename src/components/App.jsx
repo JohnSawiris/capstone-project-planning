@@ -32,7 +32,7 @@ function App() {
           max-width: 100%;
         }
       `}</style>
-        <Header />
+		<Header />
         <Switch>
           <Route exact path='/' component={Welcome}/>
           <Route path='/profile' component={UserProfile}/>

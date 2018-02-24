@@ -1,14 +1,28 @@
 import React from 'react';
 
+import TiUser from 'react-icons/lib/ti/user';
+
 function Sidebar() {
+  const avatar = {
+    color: "#eee",
+    width: "130px",
+    height: "130px",
+    magrin: "auto",
+    border: "1px solid #eee",
+    borderRadius: "50%"
+  }
   return(
     <div>
       <style jsx>{`
-          h1 {
-            color: #000;
+          .profile-info {
+            display: block;
+            width: 130px;
+            margin: auto;
           }
       `}</style>
-      <h1>Sidebar works</h1>
+      <div className="profile-info">
+        <TiUser style={avatar}/>
+      </div>
     </div>
   );
 }
