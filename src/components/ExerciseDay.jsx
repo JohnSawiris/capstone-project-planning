@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import FaCheck from 'react-icons/lib/fa/check';
 import FaClose from 'react-icons/lib/fa/close';
@@ -9,14 +10,14 @@ const icons = {
     width: '20px',
     height: '20px',
     alignSelf: 'flex-end',
-    color: 'red'
+    color: '#f10606'
   },
 
   check: {
     width: '20px',
     height: '20px',
     alignSelf: 'flex-end',
-    color: 'green'
+    color: '#068606'
   }
 }
 
@@ -37,35 +38,12 @@ class ExerciseDay extends React.Component{
   }
 
   render() {
-    let content = null;
-    if(!this.state.show) {
-      content = <div className= "exercises-list">
-        <ul>
-          {this.props.workoutRoutine.map((workout, i) =>
-            <li key={i}>{workout}</li>
-          )}
-        </ul>
-      </div>;
-    } else {
-      content = <div className= "exercises-list active">
-        <ul>
-          {this.props.workoutRoutine.map((workout, i) => {
-            return <li className="items" key={i}>{workout}
-              <div>
-                <FaCheck style={icons.check}/>
-                <FaClose style={icons.remove}/>
-              </div>
-            </li>
-          })}
-        </ul>
-      </div>;
-    }
     return(
       <div className="exercise-day">
         <style global jsx>{`
             h2 {
               color: #eee;
-              background-color: #126cce;
+              background-color: #1165bf;
               margin: 0;
               font-weight: 500;
               padding: 0.5rem;
@@ -80,12 +58,12 @@ class ExerciseDay extends React.Component{
               height: 0;
               opacity: 0;
               visibility: hidden;
-              padding: 0.4rem 0.9rem;
+              padding: 0.4rem;
               color: #000;
             }
             .exercises-list.active {
-              opacity: 1;
               height: 100%;
+              opacity: 1;
               visibility: visible;
             }
             .exercises-list ul {
@@ -98,12 +76,24 @@ class ExerciseDay extends React.Component{
               flex-direction: row;
               justify-content: space-between;
               width: 100%;
-              padding: 0.5rem;
-              border-bottom: 1px solid #000;
+              padding: 0.5rem 0;
+              color: #555;
+              border-bottom: 1px solid #999;
             }
         `}</style>
       <h2 onClick={this.handleShowingContent}>{this.props.muscle}</h2>
-        {content}
+        <div className={(this.state.show) ? "exercises-list active" : "exercises-list"}>
+          <ul>
+            {this.props.workoutRoutine.map((workout, i) =>
+              <li className="items" key={i}>{workout}
+                <div>
+                  <FaCheck style={icons.check}/>
+                  <FaClose style={icons.remove}/>
+                </div>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     );
   }

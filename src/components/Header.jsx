@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SearchBar from './SearchBar';
+
 //images
 import malePushUp from './../assets/images/push-up-male.png';
 import femalePushUp from './../assets/images/push-up-female.png';
@@ -45,6 +47,7 @@ function Header() {
           <img src={femalePushUp} />
         </div>
         <nav className="navbar">
+          <SearchBar />
           <a href="#">Sign In</a>
           <a href="#">Sign Up</a>
         </nav>

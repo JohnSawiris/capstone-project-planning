@@ -19,14 +19,14 @@ function Sidebar() {
             width: 130px;
             margin: auto;
           }
-          h3 {
+          h4 {
             color: #fff;
             text-align: center;
           }
       `}</style>
       <div className="profile-info">
         <TiUser style={avatar}/>
-        <h3>User Name</h3>
+        <h4>User Name</h4>
       </div>
     </div>
   );

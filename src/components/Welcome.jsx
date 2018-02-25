@@ -25,6 +25,7 @@ function Welcome() {
             background-color: rgba(252,76,53, 0.86);
             padding: 1rem 2rem 1rem;
             border-radius: 0.3rem;
+            color: #eee;
           }
         `}</style>
       <div className="welcome-wrapper">
