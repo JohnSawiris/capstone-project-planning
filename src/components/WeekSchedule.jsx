@@ -4,8 +4,8 @@ import ExerciseDay from './ExerciseDay';
 import Sidebar from './Sidebar';
 
 // Mimic firbase data
-const exercises = [
-  {
+const exercises = {
+  "Abs": {
     muscle: "Abs",
     workoutRoutine: [
       "Plank",
@@ -13,35 +13,35 @@ const exercises = [
       "Plank Again"
     ]
   },
-  {
+  "Shoulders": {
     muscle: "Shoulders",
     workoutRoutine: [
       "Upright",
       "Front barbell"
     ]
   },
-  {
+  "Arm": {
     muscle: "Arm",
     workoutRoutine: [
       "Barbell Curl",
       "Standing Biceps Cable Curl"
     ]
   },
-  {
+  "Chest": {
     muscle: "Chest",
     workoutRoutine: [
       "Barbell Bench Press",
       "Dips For Chest"
     ]
   },
-  {
+  "Back": {
     muscle: "Back",
     workoutRoutine: [
       "Barbell Deadlift",
       "Wide-Grip Pull-Up"
     ]
   }
-];
+};
 
 
 function WeekSchedule() {
