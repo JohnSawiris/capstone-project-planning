@@ -7,18 +7,24 @@ import FaClose from 'react-icons/lib/fa/close';
 
 const icons = {
   remove: {
-    width: '20px',
-    height: '20px',
+    width: '35px',
+    height: '35px',
     alignSelf: 'flex-end',
-    color: '#f10606'
+    color: '#f10606',
+    padding: '0.5rem',
+    cursor: 'pointer'
   },
 
   check: {
-    width: '20px',
-    height: '20px',
+    width: '35px',
+    height: '35px',
     alignSelf: 'flex-end',
-    color: '#068606'
-  }
+    color: '#068606',
+    padding: '0.5rem',
+    cursor: 'pointer'
+  },
+
+
 }
 
 class ExerciseDay extends React.Component{
@@ -38,12 +44,13 @@ class ExerciseDay extends React.Component{
   }
 
   render() {
+
     return(
       <div className="exercise-day">
         <style global jsx>{`
             h2 {
               color: #eee;
-              background-color: #1165bf;
+              background: linear-gradient(90deg, #1165bf, #1165bf, #bbb);
               margin: 0;
               font-weight: 500;
               padding: 0.5rem;
@@ -88,7 +95,7 @@ class ExerciseDay extends React.Component{
               <li className="items" key={i}>{workout}
                 <div>
                   <FaCheck style={icons.check}/>
-                  <FaClose style={icons.remove}/>
+                  <FaClose onClick={() => {console.log(i)}} style={icons.remove}/>
                 </div>
               </li>
             )}

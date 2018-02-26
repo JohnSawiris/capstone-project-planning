@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 
 // Mimic firbase data
 const exercises = {
-  "Abs": {
+  0: {
     muscle: "Abs",
     workoutRoutine: [
       "Plank",
@@ -13,28 +13,28 @@ const exercises = {
       "Plank Again"
     ]
   },
-  "Shoulders": {
+  1: {
     muscle: "Shoulders",
     workoutRoutine: [
       "Upright",
       "Front barbell"
     ]
   },
-  "Arm": {
+  2: {
     muscle: "Arm",
     workoutRoutine: [
       "Barbell Curl",
       "Standing Biceps Cable Curl"
     ]
   },
-  "Chest": {
+  3: {
     muscle: "Chest",
     workoutRoutine: [
       "Barbell Bench Press",
       "Dips For Chest"
     ]
   },
-  "Back": {
+  4: {
     muscle: "Back",
     workoutRoutine: [
       "Barbell Deadlift",
@@ -68,11 +68,13 @@ function WeekSchedule() {
           }
       `}</style>
       <div className="main">
-        {exercises.map((exercise, i) =>
-           <ExerciseDay key={i}
-                        muscle={exercise.muscle}
-                        workoutRoutine={exercise.workoutRoutine} />
-            )}
+        {Object.keys(exercises).map((exercise) => {
+          let muscleGroupExercise = exercises[exercise];
+          return <ExerciseDay key={exercise}
+                       muscle={muscleGroupExercise.muscle}
+                       workoutRoutine={muscleGroupExercise.workoutRoutine} />;
+        }
+      )}
       </div>
       <div className="sidebar">
           <Sidebar />
