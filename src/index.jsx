@@ -6,6 +6,7 @@ import { HashRouter } from 'react-router-dom';
 // Redux
 import { createStore } from 'redux';
 import removeExerciseReducer from './reducers/remove-exercise-reducer';
+import { Provider } from 'react-redux';
 
 // Components
 import App from './components/App';
@@ -14,11 +15,11 @@ const store = createStore(removeExerciseReducer);
 
 const render = (Component) => {
 	ReactDOM.render(
-		<AppContainer>
       <HashRouter>
-        <Component />
-      </HashRouter>
-		</AppContainer>,
+				<Provider store={store}>
+					<Component />
+				</Provider>
+      </HashRouter>,
 		document.getElementById('react-container')
 	);
 };

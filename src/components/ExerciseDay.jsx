@@ -95,7 +95,7 @@ class ExerciseDay extends React.Component{
               <li className="items" key={i}>{workout}
                 <div>
                   <FaCheck style={icons.check}/>
-                  <FaClose onClick={() => {console.log(i)}} style={icons.remove}/>
+                  <FaClose onClick={() => {console.log(this.props.id, i)}} style={icons.remove}/>
                 </div>
               </li>
             )}
