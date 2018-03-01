@@ -11,21 +11,23 @@ function WeekSchedule() {
       <style jsx>{`
           .schedule {
             display: flex;
+            flex-direction: column;
             justify-content: space-around;
             max-width: 1000px;
             margin: 1rem auto;
           }
           .sidebar {
-            flex-basis: 24%;
-            width: 24%;
-            background-color: rgba(0, 0, 0, 0.8);
+            order: 0;
+            flex-basis: 100%;
+            width: 100%;
             padding: 1rem;
             border-radius: 0.25rem;
-            height: 100%;
           }
           .main {
-            flex-basis: 74%;
-            width: 74%;
+            order: 1;
+            flex-basis: 98%;
+            width: 98%;
+            margin: auto;
           }
       `}</style>
       <div className="main">

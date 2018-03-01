@@ -4,23 +4,26 @@ import TiUser from 'react-icons/lib/ti/user';
 
 function Sidebar() {
   const avatar = {
-    color: "#fff",
-    width: "130px",
-    height: "130px",
+    color: "#333",
+    width: "150px",
+    height: "150px",
     magrin: "auto",
-    border: "3px solid #fff",
+    border: "3px solid #333",
     borderRadius: "50%"
   }
   return(
     <div>
       <style jsx>{`
           .profile-info {
-            display: block;
-            width: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             margin: auto;
           }
           h4 {
-            color: #fff;
+            color: #333;
             text-align: center;
           }
       `}</style>

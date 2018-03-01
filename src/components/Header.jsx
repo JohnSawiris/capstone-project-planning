@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 //images
@@ -30,6 +30,9 @@ function Header() {
               justify-content: center;
               margin-right: 1rem;
             }
+
+            `}</style>
+          <style jsx global>{`
             .navbar a {
               font-family: 'Raleway', sans-serif;
               text-decoration: none;
@@ -48,7 +51,7 @@ function Header() {
         </div>
         <nav className="navbar">
           <SearchBar />
-          <a href="#">Sign In</a>
+          <Link to="/signin">Sign In</Link>
           <a href="#">Sign Up</a>
         </nav>
       </header>
