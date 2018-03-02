@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import createBrowserHistory from 'history/createBrowserHistory';
+
 //components
 import Header from './Header';
 import Welcome from './Welcome';
@@ -9,6 +11,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 // Styles
 import './../styles/styles.css';
+
 
 function App() {
 	return(

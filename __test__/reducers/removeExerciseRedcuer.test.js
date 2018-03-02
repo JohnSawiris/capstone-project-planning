@@ -1,4 +1,4 @@
-import removeExerciseReducer from './../../src/reducers/remove-exercise-reducer';
+import removeExerciseReducer from './../../src/reducers/removeExerciseReducer';
 import exercises from './../../src/constants/InitialState';
 
 describe('removeExerciseReducer', () => {
