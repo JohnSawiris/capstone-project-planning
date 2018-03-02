@@ -15,7 +15,9 @@ import App from './components/App';
 import { firebaseApp } from './actions';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
-
+store.subscribe(() => {
+	console.log(store.getState())
+});
 
 const render = (Component) => {
 	ReactDOM.render(

@@ -5,4 +5,3 @@ export default {
   firebaseConfig: firebaseConfig,
   types: types
 }
-console.log(firebaseConfig);

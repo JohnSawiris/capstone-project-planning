@@ -1,23 +1,25 @@
 import Firebase from 'firebase';
 import constants from './../constants'
 const { firebaseConfig, types } = constants;
-console.log(types);
+
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const users = firebase.database().ref('users');
 
 // Actions creators
 export const isUserLoggedIn = (user) => {
+  console.log(user);
   return {
     type: types.USER_LOGGEDIN,
-    user
+    user: user
   }
 }
 
 export const isUserLoggedOut = (user) => {
+  console.log(user);
   return {
     type: types.USER_LOGGEDOUT,
-    user
+    user: user
   }
 }
 

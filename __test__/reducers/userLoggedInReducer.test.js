@@ -13,7 +13,7 @@ describe('userLoggedInReducer', () => {
       user: true
     }
     expect(userLoggedInReducer({}, action)).toEqual({
-      user: true
+      user: action.user
     });
   });
 
@@ -23,7 +23,7 @@ describe('userLoggedInReducer', () => {
       user: false
     }
     expect(userLoggedInReducer({}, action)).toEqual({
-      user: false
+      user: action.user
     });
   });
 })

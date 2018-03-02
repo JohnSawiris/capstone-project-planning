@@ -52,6 +52,7 @@ Header component
   padding: 1rem;
   color: #eee;
   font-weight: 500;
+  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 .navbar a:hover {

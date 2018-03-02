@@ -2,17 +2,24 @@ import types from './../constants';
 
 export default (state = {}, action) => {
   let newState;
+  let user;
 
   switch (action.type) {
     case types.USER_LOGGEDOUT:
-    newState = Object.assign({}, state, {
+    user = Object.assign({}, state[action.user], {
       user: action.user
+    })
+    newState = Object.assign({}, state, {
+      user: user
     });
     return newState;
 
     case types.USER_LOGGEDIN:
-      newState = Object.assign({}, state, {
+      user = Object.assign({}, state[action.user], {
         user: action.user
+      })
+      newState = Object.assign({}, state, {
+        user: user
       });
       return newState;
     default:

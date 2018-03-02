@@ -11,31 +11,17 @@ import femalePushUp from './../assets/images/push-up-female.png';
 import { firebaseApp, isUserLoggedIn, isUserLoggedOut } from './../actions';
 
 function Header(props) {
-  console.log(props);
+
   let content;
 
-  function handleSignOut() {
-    firebaseApp.auth().signOut();
-    const { dispatch } = props;
-    dispatch(isUserLoggedOut(false));
-  };
-  firebaseApp.auth().onAuthStateChanged(user => {
-    const { dispatch } = props;
-    if(user) {
-      dispatch(isUserLoggedIn(true));
-    } else {
-      dispatch(isUserLoggedOut(false));
-    }
-  });
-
-  if(props.user === true) {
+  if(props.user) {
     console.log('logged');
-    console.log(props);
     content = <nav className="navbar">
       <SearchBar />
-      <Link to="/" onClick={handleSignOut()}>Sign Out</Link>
+      <a onClick={handleSignOut}>Sign Out</a>
     </nav>
   } else {
+    console.log('logged out');
     content = <nav className="navbar">
       <Link to="/signin">Sign In</Link>
       <Link to="/signup">Sign Up</Link>
