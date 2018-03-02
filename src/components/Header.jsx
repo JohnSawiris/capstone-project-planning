@@ -1,32 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
+//components
 import SearchBar from './SearchBar';
-
 //images
 import malePushUp from './../assets/images/push-up-male.png';
 import femalePushUp from './../assets/images/push-up-female.png';
 //firebase
-import { firebaseApp, isUserLoggedIn, isUserLoggedOut } from './../actions';
+import { firebaseApp } from './../actions';
+import Firebase from 'firebase';
 
 function Header(props) {
+    let content;
+    let currentUser = firebaseApp.auth().currentUser;
+    function handleSigningOut() {
+      firebaseApp.auth().signOut();
+      currentUser = null;
+    }
 
-  let content;
 
-  if(props.user) {
-    console.log('logged');
-    content = <nav className="navbar">
-      <SearchBar />
-      <a onClick={handleSignOut}>Sign Out</a>
-    </nav>
-  } else {
-    console.log('logged out');
-    content = <nav className="navbar">
-      <Link to="/signin">Sign In</Link>
-      <Link to="/signup">Sign Up</Link>
-    </nav>
-  }
+    console.log('CURRENT USER ', currentUser);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        console.log('current user', user);
+        currentUser = user;
+      } else {
+        // No user is signed in.
+        console.log('is not sign in', user);
+        currentUser = user;
+      }
+  });
 
   return(
     <header className="head">
@@ -34,15 +37,21 @@ function Header(props) {
         <img src={malePushUp} />
         <img src={femalePushUp} />
       </div>
-        {content}
+        {
+
+          (currentUser) ?
+          <nav className="navbar">
+            <SearchBar />
+            <Link to="/" onClick={handleSigningOut}>Sign Out</Link>
+          </nav>
+          :
+          <nav className="navbar">
+            <Link to="/signin">Sign In</Link>
+            <Link to="/signup">Sign Up</Link>
+          </nav>
+        }
     </header>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

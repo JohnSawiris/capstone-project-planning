@@ -17,23 +17,20 @@ const icons  = {
 
 
 function SignIn(props) {
-  console.log(props);
   let _email = null;
   let _password = null;
+  const { history, dispatch } = props;
 
   function handleSignIn(email, password) {
-    const { history, dispatch } = props;
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then(user => {
-      dispatch(isUserLoggedIn(true));
-      history.push('/profile');
+      history.push('/profile')
     })
     .catch(error => {
       console.log(error);
-      dispatch(isUserLoggedOut(false));
-      history.push('/signin');
     })
   }
+
   return(
     <div className="form-wrap">
     <form className="form">

@@ -38,10 +38,8 @@ function SignUp(props) {
       dispatch(addNewUser(_name, _email, _password))
     )
     .catch(error => {
-
       console.log(error.message);
     });
-
   }
   return(
     <div className="signup-wrap">
@@ -76,4 +74,4 @@ function SignUp(props) {
   );
 }
 
-export default connect()(SignUp);
+export default SignUp;
