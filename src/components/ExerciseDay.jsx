@@ -44,50 +44,8 @@ class ExerciseDay extends React.Component{
   }
 
   render() {
-
     return(
       <div className="exercise-day">
-        <style global jsx>{`
-            h2 {
-              color: #eee;
-              background: linear-gradient(90deg, #1165bf, #1165bf, #bbb);
-              margin: 0;
-              font-weight: 500;
-              padding: 0.5rem;
-              cursor: pointer;
-            }
-            .exercise-day {
-              display: flex;
-              flex-direction: column;
-              width: 100%;
-            }
-            .exercises-list {
-              height: 0;
-              opacity: 0;
-              visibility: hidden;
-              padding: 0.4rem;
-              color: #000;
-            }
-            .exercises-list.active {
-              height: 100%;
-              opacity: 1;
-              visibility: visible;
-            }
-            .exercises-list ul {
-              list-style: none;
-              padding: 0;
-              margin: 0;
-            }
-            .items {
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              width: 100%;
-              padding: 0.5rem 0;
-              color: #555;
-              border-bottom: 1px solid #999;
-            }
-        `}</style>
       <h2 onClick={this.handleShowingContent}>{this.props.muscle}</h2>
         <div className={(this.state.show) ? "exercises-list active" : "exercises-list"}>
           <ul>

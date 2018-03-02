@@ -22,35 +22,6 @@ class SearchBar extends React.Component {
   render() {
     return(
       <div className="search-wrapper">
-        <style jsx>{`
-            .search-wrapper {
-              align-self: center;
-            }
-            .search-bar {
-              border: 0;
-              outline: 0;
-              width: 0;
-              opacity: 0;
-              padding: 0.5rem 0.8rem;
-              font-weight: 400;
-              color: #333;
-              margin: 0 0.5rem;
-              background-color: transparent;
-              transition: all 0.5s ease-in-out;
-            }
-            .search-bar.expand {
-              width: 200px;
-              opacity: 1;
-              border-bottom: 1px solid rgba(0,188,212, 0.8);
-            }
-            ::placeholder {
-              opacity: 0.8;
-            }
-            .search-bar:focus {
-              background-color: rgba(255,255,255, 0.05);
-              color: #eee;
-            }
-        `}</style>
       <form>
           <FaSearch onClick={this.handleExpanding} style={searchIcon}/>
           <input className={(this.state.expand) ? "search-bar expand" : "search-bar"} placeholder="Look Up Your Exercises" type="text" />
