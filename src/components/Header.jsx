@@ -23,17 +23,13 @@ class Header extends React.Component {
   }
 
   componentWillMount() {
+    console.log('COMPONENTWILLMOUNT');
     console.log('CURRENT USER ', this.state.currentUser);
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
-        console.log('current user', user);
-        this.setState({ currentUser: user });
-      } else {
-        // No user is signed in.
-        console.log('is not sign in', user);
-        this.setState({ currentUser: null });
-      }
+      (user)?
+        this.setState({ currentUser: user })
+      :
+        this.setState({ currentUser: null })
     });
   }
 
