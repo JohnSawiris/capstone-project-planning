@@ -15,17 +15,14 @@ import App from './components/App';
 import { firebaseApp } from './actions';
 
 const store = createStore(userLoggedInReducer, applyMiddleware(thunkMiddleware));
-store.subscribe(() => {
-	console.log(store.getState())
-});
 
 const render = (Component) => {
 	ReactDOM.render(
-      <HashRouter>
-				<Provider store={store}>
-					<Component />
-				</Provider>
-      </HashRouter>,
+		<HashRouter>
+			<Provider store={store}>
+				<Component />
+			</Provider>
+		</HashRouter>,
 		document.getElementById('react-container')
 	);
 };

@@ -15,15 +15,15 @@ import './../styles/styles.css';
 
 function App() {
 	return(
-    <div className="height">
-		<Header />
-        <Switch>
-          <Route exact path='/' component={Welcome}/>
-          <Route path='/profile' component={WeekSchedule}/>
-					<Route path='/signin' component={SignIn} />
-					<Route path='/signup' component={SignUp} />
-        </Switch>
-    </div>
+		<div className="height">
+			<Header />
+			<Switch>
+				<Route exact path='/' component={Welcome}/>
+				<Route path='/profile' component={WeekSchedule}/>
+				<Route path='/signin' component={SignIn} />
+				<Route path='/signup' component={SignUp} />
+			</Switch>
+		</div>
 	);
 }
 
