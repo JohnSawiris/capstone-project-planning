@@ -33,9 +33,10 @@ function SignUp(props) {
 		_password = _password.value;
 
 		firebaseApp.auth().createUserWithEmailAndPassword(_email, _password)
-			.then( user =>
-				dispatch(addNewUser(_name, _email, _password))
-			)
+			.then( user => {
+				dispatch(addNewUser(_name, _email, _password, user.uid))
+        console.log(user);
+			})
 			.then(() => {
 				history.push('/profile');
 			})

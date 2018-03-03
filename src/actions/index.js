@@ -5,16 +5,14 @@ const { firebaseConfig, types } = constants;
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const users = firebase.database().ref('users');
-const userKey = users.on('child_added', data => {
-  console.log(data);
-})
-console.log(userKey );
+
 // Firebase actions
-export default function addNewUser(_name, _email, _password) {
+export default function addNewUser(_name, _email, _password, id) {
 	return () => users.push({
 		displayName: _name,
 		email: _email,
 		password: _password,
+    id: id,
 		exercises: {
 			0: {
 				muscle: 'Abs',
