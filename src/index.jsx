@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import { HashRouter } from 'react-router-dom';
 // Redux
 import { createStore, applyMiddleware } from 'redux';
-import userLoggedInReducer from './reducers/userLoggedInReducer';
+import displayingUserReducer from './reducers/displayingUserReducer';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
@@ -14,8 +14,10 @@ import App from './components/App';
 //firebase
 import { firebaseApp } from './actions';
 
-const store = createStore(userLoggedInReducer, applyMiddleware(thunkMiddleware));
-
+const store = createStore(displayingUserReducer, applyMiddleware(thunkMiddleware));
+store.subscribe(() => {
+	console.log(store.getState());
+})
 const render = (Component) => {
 	ReactDOM.render(
 		<HashRouter>

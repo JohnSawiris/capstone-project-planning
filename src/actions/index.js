@@ -6,8 +6,40 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const users = firebase.database().ref('users');
 
+export function setUserToDisplay(firebaseUser) {
+	return {
+		type: types.SET_USER,
+		firebaseUser,
+		id: firebaseUser.id
+	}
+}
+
+export function fetchingData() {
+	return {
+		type: types.IS_FETCHING,
+		isFetching: true
+	}
+}
+
 // Firebase actions
-export default function addNewUser(_name, _email, _password, id) {
+export function fetchUserData(userId) {
+	return (dispatch) => {
+		dispatch(fetchingData());
+		return users.on('value', (snapshot) => {
+			const snapshotValues = snapshot.val();
+			Object.values(snapshotValues).map(user => {
+				let databaseUId = user.id;
+				if(userId === databaseUId) {
+					dispatch(setUserToDisplay(user));
+				} else {
+					console.log(userId, 'Is NOT equal ', databaseUId);
+				}
+			});
+		});
+	}
+}
+
+export function addNewUser(_name, _email, _password, id) {
 	return () => users.push({
 		displayName: _name,
 		email: _email,

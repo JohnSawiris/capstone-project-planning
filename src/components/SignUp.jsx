@@ -8,7 +8,7 @@ import FaUnlockAlt from 'react-icons/lib/fa/unlock-alt';
 //Bg Image
 
 //Actions
-import addNewUser from './../actions/index';
+import { addNewUser } from './../actions';
 
 //firebase
 import { firebaseApp } from './../actions';
@@ -35,13 +35,13 @@ function SignUp(props) {
 		firebaseApp.auth().createUserWithEmailAndPassword(_email, _password)
 			.then( user => {
 				dispatch(addNewUser(_name, _email, _password, user.uid))
-        console.log(user);
-			})
-			.then(() => {
+				_name = '';
+				_email = '';
+				_password = '';
 				history.push('/profile');
 			})
 			.catch(error => {
-				console.log(error.message);
+				console.log(error);
 			});
 	}
 	return(
