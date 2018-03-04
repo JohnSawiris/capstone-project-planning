@@ -10,7 +10,7 @@ import Firebase from 'firebase';
 
 //actions
 import { fetchUserData } from './../actions';
-import exercises from './../constants/InitialState';
+// import exercises from './../constants/InitialState';
 
 class WeekSchedule extends React.Component {
 	constructor(props) {
@@ -36,35 +36,46 @@ class WeekSchedule extends React.Component {
 	}
 
 	render() {
-		return(
-			<div className="schedule">
-				<div className="main">
-					{Object.keys(exercises).map((exercise) => {
-						let muscleGroupExercise = exercises[exercise];
-						return <ExerciseDay key={exercise}
-							id={exercise}
-							muscle={muscleGroupExercise.muscle}
-							workoutRoutine={muscleGroupExercise.workoutRoutine} />;
-					}
-					)}
+		const { isFetching, user } = this.props;
+		console.log(user);
+		if(isFetching === undefined || isFetching === true) {
+			return(
+				<h1>Fetching Data for you</h1>
+			);
+		} else {
+			return(
+				<div className="schedule">
+					<div className="main">
+						{this.props.exercises.map((exercise, i) => {
+							return <ExerciseDay key={i}
+								muscle={exercise.muscle}
+								workoutRoutine={exercise.workoutRoutine} />;
+						}
+						)}
+					</div>
+					<div className="sidebar">
+						<Sidebar userName={user.displayName}/>
+					</div>
 				</div>
-				<div className="sidebar">
-					<Sidebar />
-				</div>
-			</div>
-		);
+			);
+		}
+
 	}
 }
 
 WeekSchedule.propTypes = {
-	user: PropTypes.object
+	dispatch: PropTypes.func,
+	user: PropTypes.object,
+	isFetching: PropTypes.bool,
+	exercises: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
-	console.log(state.isFetching);
+	console.log(state.user);
 	return {
 		 user: state.user,
-		 isFetching: state.isFetching
+		 isFetching: state.isFetching,
+		 exercises: state.exercises
 	};
 };
 

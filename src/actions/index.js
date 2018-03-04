@@ -10,13 +10,14 @@ export function setUserToDisplay(firebaseUser) {
 	return {
 		type: types.SET_USER,
 		firebaseUser,
-		id: firebaseUser.id
+		id: firebaseUser.id,
+		exercises: firebaseUser.exercises
 	}
 }
 
-export function fetchingData() {
+export function requestingData() {
 	return {
-		type: types.IS_FETCHING,
+		type: types.REQUESTING_DATA,
 		isFetching: true
 	}
 }
@@ -24,7 +25,7 @@ export function fetchingData() {
 // Firebase actions
 export function fetchUserData(userId) {
 	return (dispatch) => {
-		dispatch(fetchingData());
+		dispatch(requestingData());
 		return users.on('value', (snapshot) => {
 			const snapshotValues = snapshot.val();
 			Object.values(snapshotValues).map(user => {

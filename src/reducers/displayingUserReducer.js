@@ -9,10 +9,11 @@ const displayingUserReducer = (state = {}, action) => {
       console.log(action);
       newState = Object.assign({}, state, {
         isFetching: false,
-        user: action.firebaseUser
+        user: action.firebaseUser,
+        exercises: action.exercises
       });
       return newState;
-    case types.IS_FETCHING:
+    case types.REQUESTING_DATA:
       newState = Object.assign({}, state, {
         isFetching: true
       });

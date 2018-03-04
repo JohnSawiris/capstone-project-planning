@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+//Icons
 import TiUser from 'react-icons/lib/ti/user';
 
-function Sidebar() {
+function Sidebar(props) {
 	const avatar = {
 		color: '#eee',
 		width: '150px',
@@ -15,10 +17,14 @@ function Sidebar() {
 		<div>
 			<div className="profile-info">
 				<TiUser style={avatar}/>
-				<h4>User Name</h4>
+				<h4>{props.userName}</h4>
 			</div>
 		</div>
 	);
+}
+
+Sidebar.propTypes = {
+	userName: PropTypes.string
 }
 
 export default Sidebar;
