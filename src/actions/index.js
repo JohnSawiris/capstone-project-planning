@@ -6,12 +6,31 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const users = firebase.database().ref('users');
 
-export function setUserToDisplay(firebaseUser) {
+users.on('value', (snapshot)=> {
+	let values = snapshot.val();
+	Object.values(values).map((value) => {
+		console.log(value.id);
+
+	})
+});
+
+export function removeExercise(userId) {
+	users.on('value', (snapshot)=> {
+		let values = snapshot.val();
+		Object.values(values).map((value) => {
+			console.log(value.id);
+			if (userId === value.id) {
+				console.log(value.id, ' IS EQUAL TO ', userId);
+			}
+
+		})
+	});
+}
+
+export function userLoggedOut() {
 	return {
-		type: types.SET_USER,
-		firebaseUser,
-		id: firebaseUser.id,
-		exercises: firebaseUser.exercises
+		type: types.USER_LOGGEDOUT,
+		user: null
 	}
 }
 
@@ -19,6 +38,15 @@ export function requestingData() {
 	return {
 		type: types.REQUESTING_DATA,
 		isFetching: true
+	}
+}
+
+export function setUserToDisplay(firebaseUser) {
+	return {
+		type: types.SET_USER,
+		firebaseUser,
+		id: firebaseUser.id,
+		exercises: firebaseUser.exercises
 	}
 }
 

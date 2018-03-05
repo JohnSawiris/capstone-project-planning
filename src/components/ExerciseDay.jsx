@@ -1,34 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+//Icons
+import FaTrashO from 'react-icons/lib/fa/trash-o';
 
-import FaCheck from 'react-icons/lib/fa/check';
-import FaClose from 'react-icons/lib/fa/close';
+//firebase
+import Firebase from 'firebase';
 
-const icons = {
-	remove: {
-		width: '35px',
-		height: '35px',
-		alignSelf: 'flex-end',
-		color: '#f10606',
-		padding: '0.5rem',
-		cursor: 'pointer'
-	},
-
-	check: {
-		width: '35px',
-		height: '35px',
-		alignSelf: 'flex-end',
-		color: '#068606',
-		padding: '0.5rem',
-		cursor: 'pointer'
-	},
-
-
-};
+//Action
+import { removeExercise } from './../actions';
 
 class ExerciseDay extends React.Component{
 	constructor(props) {
+		console.log(props.user.id);
 		super(props);
 		this.state = {
 			show: false
@@ -44,16 +29,21 @@ class ExerciseDay extends React.Component{
 	}
 
 	render() {
-		return(
+		const { muscle, workoutRoutine, user, exercises, index } = this.props;
+		console.log(exercises);
+ 		return(
 			<div className="exercise-day">
-				<h2 onClick={this.handleShowingContent}>{this.props.muscle}</h2>
+				<h2 onClick={this.handleShowingContent}>{muscle}</h2>
 				<div className={(this.state.show) ? 'exercises-list active' : 'exercises-list'}>
 					<ul>
 						{this.props.workoutRoutine.map((workout, i) =>
 							<li className="items" key={i}>{workout}
 								<div>
-									<FaCheck style={icons.check}/>
-									<FaClose onClick={() => {console.log(this.props.id, i);}} style={icons.remove}/>
+									<FaTrashO onClick={() => {
+											//pass the user.uid to the the action and compare the logged user and remove the entry from the exercises array
+											// dispatch(removeExercise(user.id,));
+											console.log(muscle, exercises[index], i);
+										}} className="remove"/>
 								</div>
 							</li>
 						)}
@@ -66,7 +56,15 @@ class ExerciseDay extends React.Component{
 
 ExerciseDay.propTypes = {
 	muscle: PropTypes.string,
-	workoutRoutine: PropTypes.array
+	workoutRoutine: PropTypes.array,
+	index: PropTypes.number,
+	exercises: PropTypes.array
 };
 
-export default ExerciseDay;
+const mapStateToProps = state => {
+	return {
+		user: state.user
+	}
+}
+
+export default connect(mapStateToProps)(ExerciseDay);

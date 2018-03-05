@@ -9,8 +9,7 @@ import Sidebar from './Sidebar';
 import Firebase from 'firebase';
 
 //actions
-import { fetchUserData } from './../actions';
-// import exercises from './../constants/InitialState';
+import { fetchUserData, userLoggedOut } from './../actions';
 
 class WeekSchedule extends React.Component {
 	constructor(props) {
@@ -19,19 +18,22 @@ class WeekSchedule extends React.Component {
 
 	componentWillMount() {
 		console.log(this.props);
-		const { dispatch } = this.props;
+		const { dispatch, history } = this.props;
 		firebase.auth().onAuthStateChanged(user => {
 			if(user) {
 				dispatch(fetchUserData(user.uid))
 			} else {
-				console.log('There isn\'t a signed in User');
+				console.log('There isn\'t a signed in User', user);
+				dispatch(userLoggedOut());
+				// If user is not logged in temproraly redirect to signin route
+				history.push('/signin');
 			}
 		});
 	}
 
 	componentDidMount() {
 		setTimeout(() => {
-			console.log(this.props.user);
+			console.log(this.props.exercises);
 		}, 2000)
 	}
 
@@ -48,7 +50,9 @@ class WeekSchedule extends React.Component {
 					<div className="main">
 						{this.props.exercises.map((exercise, i) => {
 							return <ExerciseDay key={i}
+								index={i}
 								muscle={exercise.muscle}
+								exercises={this.props.exercises}
 								workoutRoutine={exercise.workoutRoutine} />;
 						}
 						)}

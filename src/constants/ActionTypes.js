@@ -1,4 +1,3 @@
 export const SET_USER = 'SET_USER';
 export const REQUESTING_DATA = 'REQUESTING_DATA';
 export const USER_LOGGEDOUT = 'USER_LOGGEDOUT';
-export const USER_LOGGEDIN = 'USER_LOGGEDIN';
