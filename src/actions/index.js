@@ -11,7 +11,7 @@ users.on('value', (snapshot)=> {
 	Object.values(values).map((value) => {
 		console.log(value.id);
 
-	})
+	});
 });
 
 export function removeExercise(userId) {
@@ -23,22 +23,24 @@ export function removeExercise(userId) {
 				console.log(value.id, ' IS EQUAL TO ', userId);
 			}
 
-		})
+		});
 	});
 }
 
-export function userLoggedOut() {
-	return {
-		type: types.USER_LOGGEDOUT,
-		user: null
-	}
-}
+// export function userLoggedOut(user) {
+// 	return {
+// 		type: types.USER_LOGGEDOUT,
+// 		user,
+// 		isFetching: false,
+// 		exercises: null
+// 	};
+// }
 
 export function requestingData() {
 	return {
 		type: types.REQUESTING_DATA,
 		isFetching: true
-	}
+	};
 }
 
 export function setUserToDisplay(firebaseUser) {
@@ -47,7 +49,7 @@ export function setUserToDisplay(firebaseUser) {
 		firebaseUser,
 		id: firebaseUser.id,
 		exercises: firebaseUser.exercises
-	}
+	};
 }
 
 // Firebase actions
@@ -58,14 +60,15 @@ export function fetchUserData(userId) {
 			const snapshotValues = snapshot.val();
 			Object.values(snapshotValues).map(user => {
 				let databaseUId = user.id;
-				if(userId === databaseUId) {
+				if(userId === user.id) {
 					dispatch(setUserToDisplay(user));
-				} else {
-					console.log(userId, 'Is NOT equal ', databaseUId);
 				}
+				// else {
+				// 	console.log(userId, 'Is NOT equal ', databaseUId);
+				// }
 			});
 		});
-	}
+	};
 }
 
 export function addNewUser(_name, _email, _password, id) {
@@ -73,7 +76,7 @@ export function addNewUser(_name, _email, _password, id) {
 		displayName: _name,
 		email: _email,
 		password: _password,
-    id: id,
+		id: id,
 		exercises: {
 			0: {
 				muscle: 'Abs',

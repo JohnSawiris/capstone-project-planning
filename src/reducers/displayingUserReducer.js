@@ -19,11 +19,6 @@ const displayingUserReducer = (state = {}, action) => {
         isFetching: true
       });
       return newState;
-    case types.USER_LOGGEDOUT:
-      newState = Object.assign({}, state, {
-        user: action.user
-      });
-      return newState;
     default:
       return state;
   }

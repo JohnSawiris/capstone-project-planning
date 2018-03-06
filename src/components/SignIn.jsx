@@ -6,7 +6,7 @@ import FaUnlockAlt from 'react-icons/lib/fa/unlock-alt';
 // Images
 import signinBg from './../assets/images/signin.jpg';
 //Firebase
-import { firebaseApp, isUserLoggedIn, isUserLoggedOut } from './../actions';
+import { fetchUserData } from './../actions';
 
 const icons  = {
 	color: 'rgba(0, 188, 212, 0.8)',
@@ -22,7 +22,8 @@ function SignIn(props) {
 	const { history, dispatch } = props;
 
 	function handleSignIn(email, password) {
-		firebaseApp.auth().signInWithEmailAndPassword(email, password)
+		const { dispatch } = props;
+		firebase.auth().signInWithEmailAndPassword(email, password)
 			.then(user => {
 				history.push('/profile');
 			})
@@ -34,7 +35,7 @@ function SignIn(props) {
 	return(
 		<div className="form-wrap">
 			<form className="form">
-				<h1>Sing In</h1>
+				<h1>Sign In</h1>
 				<div className="input-group">
 					<div className="input-wrap">
 						<MdEmail style={icons} />

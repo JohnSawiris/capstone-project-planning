@@ -25,6 +25,6 @@ function Sidebar(props) {
 
 Sidebar.propTypes = {
 	userName: PropTypes.string
-}
+};
 
 export default Sidebar;

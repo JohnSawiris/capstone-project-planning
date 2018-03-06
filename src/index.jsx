@@ -15,9 +15,10 @@ import App from './components/App';
 import { firebaseApp } from './actions';
 
 const store = createStore(displayingUserReducer, applyMiddleware(thunkMiddleware));
+console.log(store.getState());
 store.subscribe(() => {
 	console.log(store.getState());
-})
+});
 const render = (Component) => {
 	ReactDOM.render(
 		<HashRouter>

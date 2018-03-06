@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 //components
 import SearchBar from './SearchBar';
 //images
@@ -8,6 +10,8 @@ import femalePushUp from './../assets/images/push-up-female.png';
 //firebase
 import { firebaseApp } from './../actions';
 import Firebase from 'firebase';
+//Actions
+import { userLoggedOut } from './../actions';
 //icons
 import FaSignIn from 'react-icons/lib/fa/sign-in';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
@@ -18,12 +22,13 @@ class Header extends React.Component {
 		super(props);
 		this.state = {
 			currentUser: null
-		};
+		}
+		this.handleSigningOut = this.handleSigningOut.bind(this);
 	}
 
 	handleSigningOut() {
-		firebaseApp.auth().signOut().then(() => {
-		});
+		const { dispatch } = this.props;
+		firebaseApp.auth().signOut();
 	}
 
 	componentWillMount() {
@@ -36,6 +41,7 @@ class Header extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.user);
 		return(
 			<header className="head">
 				<Link to='/' className="logo">
@@ -59,4 +65,9 @@ class Header extends React.Component {
 	}
 }
 
-export default Header;
+Header.propTypes = {
+	user: PropTypes.object,
+	dispatch: PropTypes.func
+}
+
+export default connect()(Header);

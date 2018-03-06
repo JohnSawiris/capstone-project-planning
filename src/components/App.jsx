@@ -1,8 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import createBrowserHistory from 'history/createBrowserHistory';
-
 //components
 import Header from './Header';
 import Welcome from './Welcome';

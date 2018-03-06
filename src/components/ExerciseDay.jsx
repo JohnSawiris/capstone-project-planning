@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 //Icons
 import FaTrashO from 'react-icons/lib/fa/trash-o';
 
@@ -13,7 +12,6 @@ import { removeExercise } from './../actions';
 
 class ExerciseDay extends React.Component{
 	constructor(props) {
-		console.log(props.user.id);
 		super(props);
 		this.state = {
 			show: false
@@ -30,7 +28,6 @@ class ExerciseDay extends React.Component{
 
 	render() {
 		const { muscle, workoutRoutine, user, exercises, index } = this.props;
-		console.log(exercises);
  		return(
 			<div className="exercise-day">
 				<h2 onClick={this.handleShowingContent}>{muscle}</h2>
@@ -40,10 +37,10 @@ class ExerciseDay extends React.Component{
 							<li className="items" key={i}>{workout}
 								<div>
 									<FaTrashO onClick={() => {
-											//pass the user.uid to the the action and compare the logged user and remove the entry from the exercises array
-											// dispatch(removeExercise(user.id,));
-											console.log(muscle, exercises[index], i);
-										}} className="remove"/>
+										//pass the user.uid to the the action and compare the logged user and remove the entry from the exercises array
+										// dispatch(removeExercise(user.id,));
+										console.log(muscle, exercises[index], i);
+									}} className="remove"/>
 								</div>
 							</li>
 						)}
@@ -64,7 +61,7 @@ ExerciseDay.propTypes = {
 const mapStateToProps = state => {
 	return {
 		user: state.user
-	}
-}
+	};
+};
 
 export default connect(mapStateToProps)(ExerciseDay);

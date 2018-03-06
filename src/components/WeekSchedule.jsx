@@ -17,16 +17,14 @@ class WeekSchedule extends React.Component {
 	}
 
 	componentWillMount() {
-		console.log(this.props);
 		const { dispatch, history } = this.props;
-		firebase.auth().onAuthStateChanged(user => {
+		firebase.auth().onAuthStateChanged((user) => {
 			if(user) {
-				dispatch(fetchUserData(user.uid))
+				dispatch(fetchUserData(user.uid));
 			} else {
-				console.log('There isn\'t a signed in User', user);
-				dispatch(userLoggedOut());
-				// If user is not logged in temproraly redirect to signin route
-				history.push('/signin');
+				dispatch(userLoggedOut(user))
+				// If user is not logged in temproraly redirect to / route
+				history.push('/');
 			}
 		});
 	}
@@ -34,12 +32,12 @@ class WeekSchedule extends React.Component {
 	componentDidMount() {
 		setTimeout(() => {
 			console.log(this.props.exercises);
-		}, 2000)
+		}, 2000);
 	}
 
 	render() {
-		const { isFetching, user } = this.props;
-		console.log(user);
+		console.log(this.props);
+		const { isFetching, user, location } = this.props;
 		if(isFetching === undefined || isFetching === true) {
 			return(
 				<h1>Fetching Data for you</h1>
@@ -72,7 +70,7 @@ WeekSchedule.propTypes = {
 	user: PropTypes.object,
 	isFetching: PropTypes.bool,
 	exercises: PropTypes.array
-}
+};
 
 const mapStateToProps = (state) => {
 	console.log(state.user);
