@@ -37,6 +37,10 @@ Open a browser tab and navigate to localhost:8080 and Sign up
 
 * React.js
 * Redux
+* React-router-dom
+* React-redux
+* Redux-thunk
+* Babel
 * JSX
 * CSS
 * Webpack
