@@ -263,6 +263,24 @@ Searchbar component
 }
 
 /*********
+ExercisesDetails component
+*********/
+.exercises-wraper {
+  width: 50%;
+  margin: auto;
+  border: 1px solid #555;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.category {
+  color: rgba(0,188,212, 1);
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+
+/*********
 ExerciseDay component
 *********/
 
