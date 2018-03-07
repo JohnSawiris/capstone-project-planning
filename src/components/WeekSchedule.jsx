@@ -14,6 +14,7 @@ import { fetchUserData, userLoggedOut } from './../actions';
 class WeekSchedule extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props);
 	}
 
 	componentWillMount() {
@@ -46,7 +47,7 @@ class WeekSchedule extends React.Component {
 			return(
 				<div className="schedule">
 					<div className="main">
-						{this.props.exercises.map((exercise, i) => {
+						{Object.values(this.props.exercises).map((exercise, i) => {
 							return <ExerciseDay key={i}
 								index={i}
 								muscle={exercise.muscle}
@@ -69,15 +70,17 @@ WeekSchedule.propTypes = {
 	dispatch: PropTypes.func,
 	user: PropTypes.object,
 	isFetching: PropTypes.bool,
-	exercises: PropTypes.array
+	exercises: PropTypes.array,
+	displayName: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
-	console.log(state.user);
+	console.log(state);
 	return {
 		 user: state.user,
-		 isFetching: state.isFetching,
-		 exercises: state.exercises
+		 isFetching: state.user.isFetching,
+		 exercises: state.user.exercises,
+		 displayName: state.user.displayName
 	};
 };
 

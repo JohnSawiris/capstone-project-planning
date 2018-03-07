@@ -17,7 +17,7 @@ function Sidebar(props) {
 		<div>
 			<div className="profile-info">
 				<TiUser style={avatar}/>
-				<h4>{props.userName}</h4>
+				<h4 className="user-name">{props.userName}</h4>
 			</div>
 		</div>
 	);

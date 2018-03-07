@@ -168,7 +168,7 @@ Sidebar component
   width: 100%;
   margin: auto;
 }
-h4 {
+.user-name{
   color: #eee;
   text-align: center;
   font-weight: 500;
@@ -206,38 +206,67 @@ Searchbar component
 ***********/
 
 .search-wrapper {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+}
+.search-from {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 90%;
+  margin: auto;
+}
+.search-header {
+  margin-bottom: 0;
+  font-weight: 500;
+  align-self: flex-start;
 }
 .search-bar {
-  border: 0;
-  outline: 0;
-  width: 0;
-  opacity: 0;
-  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(0,188,212, 0.8);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 60%;
+  margin-top: 2rem;
   font-weight: 400;
-  color: #333;
-  margin: 0 0.5rem;
+  color: #222;
+  font-size: 1rem;
   background-color: transparent;
-  transition: all 0.5s ease-in-out;
-}
-.search-bar.expand {
-  width: 200px;
-  opacity: 1;
-  border-bottom: 1px solid rgba(0,188,212, 0.8);
-}
-::placeholder {
-  opacity: 0.8;
+  box-shadow: 0px 1px 2px #000;
+  transition: all 0.3s ease-in;
 }
 .search-bar:focus {
-  background-color: rgba(255,255,255, 0.05);
-  color: #eee;
+  background-color: rgba(0,0,0, 0.05);
+  border: 1px solid rgba(0,188,212, 1);
+  outline: 0;
+  box-shadow: 0px 4px 8px #000;
+}
+.submit-btn {
+  background-color: rgba(0,188,212, 0.8);
+  border: 1px solid rgba(0,188,212, 0.8);
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.submit-btn:hover {
+  background-color: rgba(0,188,212, 1);
+  border-color: rgba(0,188,212, 1);
+  box-shadow: 0px 4px 8px #000;
 }
 
 /*********
 ExerciseDay component
 *********/
 
-h2 {
+.exercise-day-header {
   color: #eee;
   background: linear-gradient(90deg, #1165bf, #1165bf, #bbb);
   margin: 0;

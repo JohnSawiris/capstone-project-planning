@@ -51,7 +51,7 @@ class Header extends React.Component {
 				{
 					(this.state.currentUser != null)?
 						<nav className="navbar">
-							<SearchBar />
+							<Link to="/search">Look Up a Workout</Link>
 							<Link to="/" onClick={this.handleSigningOut}>Sign Out <FaSignOut /></Link>
 						</nav>
 						:

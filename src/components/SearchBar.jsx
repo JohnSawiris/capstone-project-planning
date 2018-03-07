@@ -1,41 +1,39 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 // icons
 import FaSearch from 'react-icons/lib/fa/search';
+//actions
+import { fetchExercises } from './../actions';
+//Components
+import ExercisesDetails from './ExercisesDetails';
 
-class SearchBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			expand: false
-		};
-		this.handleExpanding =  this.handleExpanding.bind(this);
+function SearchBar(props) {
+	let _searchTerm;
+
+	function handleSubmit(event) {
+		const { dispatch } = props;
+		event.preventDefault();
+		let searchTermValue = _searchTerm.value.charAt(0).toUpperCase() + _searchTerm.value.slice(1).toLowerCase();
+		dispatch(fetchExercises(searchTermValue));
+		console.log(searchTermValue);
+		searchTermValue = '';
 	}
-
-	handleExpanding() {
-		let currExpand = this.state.expand;
-		this.setState({
-			expand: !currExpand
-		});
-	}
-
-	render() {
-		return(
+	return(
+		<div>
 			<div className="search-wrapper">
-				<form>
-					<FaSearch onClick={this.handleExpanding} style={searchIcon}/>
-					<input className={(this.state.expand) ? 'search-bar expand' : 'search-bar'} placeholder="Look Up Your Exercises" type="text" />
+				<h2 className="search-header">Look Up the Muscle group that you wish to work on</h2>
+				<form className="search-from" onSubmit={handleSubmit}>
+					<input
+						className='search-bar'
+						placeholder="Look Up Abs, Arms, Chest etc..."
+						ref={(input) => { _searchTerm = input }}
+						type="text" />
+					 <button className="submit-btn" type="submit">Search</button>
 				</form>
 			</div>
-		);
-	}
+			<ExercisesDetails />
+		</div>
+	);
 }
 
-const searchIcon = {
-	width: '20px',
-	height: '20px',
-	color: 'rgba(255,255,255,0.6)',
-	cursor: 'pointer'
-};
-
-export default SearchBar;
+export default connect()(SearchBar);

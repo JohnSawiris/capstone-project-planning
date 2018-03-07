@@ -30,7 +30,7 @@ class ExerciseDay extends React.Component{
 		const { muscle, workoutRoutine, user, exercises, index } = this.props;
  		return(
 			<div className="exercise-day">
-				<h2 onClick={this.handleShowingContent}>{muscle}</h2>
+				<h2 className="exercise-day-header" onClick={this.handleShowingContent}>{muscle}</h2>
 				<div className={(this.state.show) ? 'exercises-list active' : 'exercises-list'}>
 					<ul>
 						{this.props.workoutRoutine.map((workout, i) =>

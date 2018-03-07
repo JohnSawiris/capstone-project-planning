@@ -3,20 +3,20 @@ const { types } = constants;
 
 const displayingUserReducer = (state = {}, action) => {
   let newState;
-  let newExercises;
 
   switch (action.type) {
     case types.SET_USER:
       console.log(action);
       newState = Object.assign({}, state, {
-        isFetching: false,
-        user: action.firebaseUser,
-        exercises: action.exercises
+          user: action.firebaseUser,
+          isFetching: false,
+          exercises: action.exercises,
+          displayName: action.displayName
       });
       return newState;
     case types.REQUESTING_DATA:
       newState = Object.assign({}, state, {
-        isFetching: true
+          isFetching: true
       });
       return newState;
     default:

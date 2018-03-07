@@ -25,31 +25,69 @@ export function removeExercise(userId) {
 
 		});
 	});
-}
-
-// export function userLoggedOut(user) {
-// 	return {
-// 		type: types.USER_LOGGEDOUT,
-// 		user,
-// 		isFetching: false,
-// 		exercises: null
-// 	};
-// }
+};
 
 export function requestingData() {
 	return {
-		type: types.REQUESTING_DATA,
-		isFetching: true
+		type: types.REQUESTING_DATA
 	};
-}
+};
 
 export function setUserToDisplay(firebaseUser) {
 	return {
 		type: types.SET_USER,
 		firebaseUser,
 		id: firebaseUser.id,
-		exercises: firebaseUser.exercises
+		exercises: firebaseUser.exercises,
+		displayName: firebaseUser.displayName
 	};
+};
+
+export function requestingExercises() {
+	return {
+		type: types.REQUESTING_EXERCISES
+	};
+};
+
+export function receivingExercises(name, category, description) {
+	return {
+		type: types.RECEIVING_EXERCISES,
+		name,
+		category,
+		description
+	};
+};
+
+
+//API Action
+export function fetchExercises(searchTerm) {
+	return function(dispatch) {
+		dispatch(requestingExercises());
+		return fetch('https://wger.de/api/v2/exerciseinfo/?language=2&status=2&limit=200').then(
+			response => response.json(),
+			err => console.log(err)
+		).then(json => {
+			if(json.results.length > 0) {
+				console.log(json.results);
+				json.results.map((result) => {
+					let name = '';
+					let category = '';
+					let description = '';
+					if(result.category.name == searchTerm) {
+					  name = result.name;
+					  category = result.category.name;
+					  description = result.description.replace(/<[^>]*>/g, '');
+						console.log('NAME', name, 'CATEGORY', category, 'DESC', description);
+					} else {
+						name = result.name;
+					  category = result.category.name;
+					  description = result.description.replace(/<[^>]*>/g, '');
+						console.log(name, category, description);
+					}
+				});
+			}
+		});
+	}
 }
 
 // Firebase actions
