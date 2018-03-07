@@ -23,8 +23,6 @@ class WeekSchedule extends React.Component {
 			if(user) {
 				dispatch(fetchUserData(user.uid));
 			} else {
-				dispatch(userLoggedOut(user))
-				// If user is not logged in temproraly redirect to / route
 				history.push('/');
 			}
 		});
