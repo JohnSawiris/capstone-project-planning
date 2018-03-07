@@ -41,7 +41,6 @@ class Header extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.user);
 		return(
 			<header className="head">
 				<Link to='/' className="logo">
@@ -66,7 +65,6 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-	user: PropTypes.object,
 	dispatch: PropTypes.func
 }
 

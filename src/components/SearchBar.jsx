@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 // icons
 import FaSearch from 'react-icons/lib/fa/search';
 //actions
@@ -22,6 +23,7 @@ function SearchBar(props) {
 		<div>
 			<div className="search-wrapper">
 				<h2 className="search-header">Look Up the Muscle group that you wish to work on</h2>
+				<Link to="/profiel">Take me back to my profile</Link>
 				<form className="search-from" onSubmit={handleSubmit}>
 					<input
 						className='search-bar'

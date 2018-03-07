@@ -1,6 +1,8 @@
 import Firebase from 'firebase';
 import constants from './../constants';
+import v4 from 'uuid/v4';
 const { firebaseConfig, types } = constants;
+
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -49,12 +51,13 @@ export function requestingExercises() {
 	};
 };
 
-export function receivingExercises(name, category, description) {
+export function receivingExercises(name, category, description, id) {
 	return {
 		type: types.RECEIVING_EXERCISES,
 		name,
 		category,
-		description
+		description,
+		id
 	};
 };
 
@@ -73,17 +76,19 @@ export function fetchExercises(searchTerm) {
 					let name = '';
 					let category = '';
 					let description = '';
-					if(result.category.name == searchTerm) {
+					if(result.category.name === searchTerm) {
+						let id = v4();
 					  name = result.name;
 					  category = result.category.name;
 					  description = result.description.replace(/<[^>]*>/g, '');
-						console.log('NAME', name, 'CATEGORY', category, 'DESC', description);
-					} else {
-						name = result.name;
-					  category = result.category.name;
-					  description = result.description.replace(/<[^>]*>/g, '');
-						console.log(name, category, description);
+						dispatch(receivingExercises(name, category, description, id));
 					}
+					// else {
+					// 	name = result.name;
+					//   category = result.category.name;
+					//   description = result.description.replace(/<[^>]*>/g, '');
+					// 	console.log(name, category, description);
+					// }
 				});
 			}
 		});
